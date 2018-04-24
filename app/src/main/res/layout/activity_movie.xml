@@ -44,6 +44,13 @@
         app:layout_constraintTop_toBottomOf="@+id/movieTitle"
         app:layout_constraintVertical_bias="0.0" />
 
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
     <fragment
         android:id="@+id/actorsListFragment"
         android:name="pl.mitelski.a238006.betterfilmwebapp.ActorsListFragment"
@@ -55,11 +62,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/movieCategory"/>
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+
+    <!--// TODO-->
+    <!--<fragment-->
+        <!--android:id="@+id/imagesGridFragment"-->
+        <!--android:name="pl.mitelski.a238006.betterfilmwebapp.ImagesGridFragment"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/movieCategory"/>-->
 
 </android.support.constraint.ConstraintLayout>
