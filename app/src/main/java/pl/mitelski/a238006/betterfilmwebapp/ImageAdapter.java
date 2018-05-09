@@ -21,20 +21,20 @@ class ImageAdapter extends ArrayAdapter<String> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.gridview_image_item, parent, false);
+//            convertView = LayoutInflater.from(getContext()).inflate(R.layout.gridview_image_item, parent, false);
         }
 
 
         String url = getItem(position);
 //
 
-        ImageView img = convertView.findViewById(R.id.imageItem);
+//        ImageView img = convertView.findViewById(R.id.imageItem);
 
-        Picasso.get()
-                .load(url)
-                .fit()
-                .centerCrop()
-                .into(img);
+//        Picasso.get()
+//                .load(url)
+//                .fit()
+//                .centerCrop()
+//                .into(img);
 
         return convertView;
     }

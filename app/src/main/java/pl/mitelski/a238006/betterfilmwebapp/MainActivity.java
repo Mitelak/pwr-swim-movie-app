@@ -1,6 +1,5 @@
 package pl.mitelski.a238006.betterfilmwebapp;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,10 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import java.security.PrivateKey;
 import java.util.ArrayList;
 
 // TODO OnRestore
@@ -23,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements MoviesListAdapter
     public static final String EXTRA_MOVIE_CATEGORY = "pl.mitelski.CATEGORY";
     public static final String EXTRA_MOVIE_IMAGE = "pl.mitelski.IMAGE";
 
-
     private MoviesListAdapter adapter;
 
     @Override
@@ -31,16 +27,12 @@ public class MainActivity extends AppCompatActivity implements MoviesListAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<Movie> moviesList = new ArrayList<>();
-        FakeDataProvider provider = new FakeDataProvider();
-        for (int i=0; i<15; i++)
-            moviesList.add(new Movie(provider.getTitle(), provider.getCategory(), provider.getImageUrl()));
-
         final RecyclerView recyclerView = findViewById(R.id.rvMovies);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new MoviesListAdapter(this, moviesList);
+        adapter = new MoviesListAdapter(this, loadData());
+
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
 
@@ -56,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements MoviesListAdapter
 
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                Toast.makeText(getApplicationContext(), "Clicked" + viewHolder.getAdapterPosition(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Usunieto", Toast.LENGTH_LONG).show();
                 adapter.removeItem(viewHolder.getAdapterPosition());
             }
         };
@@ -66,8 +58,12 @@ public class MainActivity extends AppCompatActivity implements MoviesListAdapter
 
     }
 
-    private void loadData() {
-
+    private ArrayList<Movie> loadData() {
+        ArrayList<Movie> moviesList = new ArrayList<>();
+        FakeDataProvider provider = new FakeDataProvider();
+        for (int i=0; i<15; i++)
+            moviesList.add(new Movie(provider.getTitle(), provider.getCategory(), provider.getImageUrl()));
+        return moviesList;
     }
 
     @Override
@@ -82,4 +78,5 @@ public class MainActivity extends AppCompatActivity implements MoviesListAdapter
         intent.putExtra(EXTRA_MOVIE_IMAGE, item.getImageUrl());
         startActivity(intent);
     }
+
 }

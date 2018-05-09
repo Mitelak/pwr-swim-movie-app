@@ -1,6 +1,12 @@
 package pl.mitelski.a238006.betterfilmwebapp;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -12,7 +18,7 @@ import static pl.mitelski.a238006.betterfilmwebapp.MainActivity.EXTRA_MOVIE_CATE
 import static pl.mitelski.a238006.betterfilmwebapp.MainActivity.EXTRA_MOVIE_IMAGE;
 import static pl.mitelski.a238006.betterfilmwebapp.MainActivity.EXTRA_MOVIE_TITLE;
 
-public class MovieActivity extends AppCompatActivity {
+public class MovieActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +30,8 @@ public class MovieActivity extends AppCompatActivity {
                 intent.getStringExtra(EXTRA_MOVIE_CATEGORY),
                 intent.getStringExtra(EXTRA_MOVIE_IMAGE));
 
+        ViewPager pager = findViewById(R.id.viewPager);
+        pager.setAdapter(new PagerAdapter(getSupportFragmentManager()));
     }
 
     private void displayData(String title, String category, String backgroundImg) {
@@ -38,5 +46,27 @@ public class MovieActivity extends AppCompatActivity {
                 .fit()
                 .centerCrop()
                 .into(imageView);
+    }
+
+    private class PagerAdapter extends FragmentPagerAdapter {
+        PagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return new ActorsListFragment();
+                case 1:
+                    return new ImagesGridFragment();
+            }
+            return null;
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
     }
 }

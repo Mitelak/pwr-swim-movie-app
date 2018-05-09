@@ -65,6 +65,10 @@ public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.Vi
         public void onClick(View v) {
             if (clickListener != null) clickListener.onItemClick(v, getAdapterPosition());
         }
+
+        public String getTitle() {
+            return String.valueOf(titleView.getText());
+        }
     }
 
     Movie getItem(int id) {

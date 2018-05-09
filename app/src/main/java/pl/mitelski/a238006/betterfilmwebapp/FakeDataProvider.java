@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class FakeDataProvider {
     private Random rand = new Random();
-    private static final String[] titles = {"Avengers", "Szklanką po łapkach", "Gladiator", "Pulp fiction", "12 gniewnych ludzi", "My Little Pony: Przyjaźń to Magia", "John Wick"};
+    private static final String[] titles = {"Avengers", "Ojciec chrzestny", "Gladiator", "Pulp fiction", "12 gniewnych ludzi", "My Little Pony: Przyjaźń to Magia", "John Wick"};
     private static final String[] categories = {"animacja", "sci-fi", "komedia", "dramat", "akcja", "komedia romantyczna"};
     private static final String[] images = {
             "https://ia.media-imdb.com/images/M/MV5BMTkxMTA5OTAzMl5BMl5BanBnXkFtZTgwNjA5MDc3NjE@._V1_SY1000_CR0,0,673,1000_AL_.jpg",
